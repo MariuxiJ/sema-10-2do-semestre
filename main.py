@@ -74,9 +74,9 @@ def menu():
                 print(f"\n[!] AVISO: No encontré productos con el nombre '{n}' agregar en añadir producto o revisar inventario y verificar .")
 
         elif opcion == "5":
-            # Listar sigue igual, solo que ahora los trae directo del archivo
             lista = inv.listar_productos()
             if lista:
+                # Mantenemos tu encabezado con el orden de columnas
                 print("\n--- INVENTARIO ACTUAL ---")
                 print(f"{'ID':<10} | {'NOMBRE':<20} | {'STOCK':<10} | {'PRECIO':<10}")
                 print("-" * 65)
