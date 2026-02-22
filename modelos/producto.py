@@ -1,43 +1,29 @@
-# modelos/producto.py
-
 class Producto:
-    
     def __init__(self, id_producto, nombre, cantidad, precio):
-        self.__id = id_producto  # Atributo privado
+        # Uso los dos guiones bajos para el encapsulamiento
+        self.__id = id_producto
         self.__nombre = nombre
         self.__cantidad = cantidad
         self.__precio = precio
-
-    # Getters y Setters con decoradores (Encapsulamiento)
+    # Estos @property son para poder leer los atributos privados desde afuera 
     @property
-    def id(self):
-        return self.__id
-
+    def id(self): return self.__id
     @property
-    def nombre(self):
-        return self.__nombre
-
+    def nombre(self): return self.__nombre
     @property
-    def cantidad(self):
-        return self.__cantidad
-
-    # Setter para cantidad con validación lógica de negocio
+    def cantidad(self): return self.__cantidad
+    # Este setter es para que no me dejen poner stock negativo por error
     @cantidad.setter
     def cantidad(self, valor):
-        if valor >= 0:
-            self.__cantidad = valor
-        else:
-            print("Error: La cantidad no puede ser negativa.")
+        if valor >= 0: self.__cantidad = valor
+        else: print("Error: Cantidad no negativa.")
 
     @property
-    def precio(self):
-        return self.__precio
-
+    def precio(self): return self.__precio
+    
     @precio.setter
     def precio(self, valor):
-        if valor > 0:
-            self.__precio = valor
+        if valor > 0: self.__precio = valor
 
-    # Método especial para representar el objeto como una cadena de texto
     def __str__(self):
         return f"ID: {self.__id} | Nombre: {self.__nombre} | Stock: {self.__cantidad} | Precio: ${self.__precio:.2f}"
