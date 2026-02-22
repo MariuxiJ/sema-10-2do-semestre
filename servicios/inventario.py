@@ -9,6 +9,7 @@ class Inventario:
         self.cargar_desde_archivo()
 
     def cargar_desde_archivo(self):
+        #Manejo de FileNotFoundError
         if not os.path.exists(self.archivo): return
         try:
             # Abro el archivo en modo lectura ('r') para traer los datos

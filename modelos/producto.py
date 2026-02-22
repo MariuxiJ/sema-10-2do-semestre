@@ -26,4 +26,5 @@ class Producto:
         if valor > 0: self.__precio = valor
 
     def __str__(self):
-        return f"ID: {self.__id} | Nombre: {self.__nombre} | Stock: {self.__cantidad} | Precio: ${self.__precio:.2f}"
+        # Esto alinea los datos para que parezcan columnas de una tabla
+        return f"{str(self.id):<10} | {self.nombre:<20} | {str(self.cantidad):<10} | ${self.precio:<10.2f}"

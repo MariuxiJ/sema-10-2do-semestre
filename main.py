@@ -21,15 +21,26 @@ def menu():
         opcion = input("Seleccione una opción (1-6): ")
 
         if opcion == "1":
+            # 1. Pedimos el ID como texto primero
+            id_input = input("ID: ")
+            
+            # 2. VALIDACIÓN: ¿Son solo números?
+            if not id_input.isdigit():
+                print("\n[!] ERROR: El ID debe ser solo números (ejemplo: 101).")
+                continue # Esto hace que regrese al menú sin dañarse
+            
             try:
-                # Esto es lo mismo: pido los datos pero ahora los guardo en el txt
-                i = input("ID: "); n = input("Nombre: ")
-                c = int(input("Cantidad: ")); p = float(input("Precio: "))
-                res, msg = inv.agregar_producto(Producto(i, n, c, p))
-                print(f"\n>>> {msg}")
-            except ValueError: 
-                # CAMBIO: Si ponen letras donde van números, les mando este aviso para que no se caiga el programa
-                print("\n[!] AVISO: Solo coloca números en cantidad y precio. Intenta de nuevo.")
+                nombre = input("Nombre: ")
+                cantidad = int(input("Cantidad: "))
+                precio = float(input("Precio: "))
+                
+                # Aquí llamas a tu función de agregar
+                # inv.agregar_producto(Producto(id_input, nombre, cantidad, precio))
+                print("\n>>> Producto agregado con éxito.")
+                
+            except ValueError:
+                # Esto atrapa el error si ponen letras en Cantidad o Precio
+                print("\n[!] ERROR: Cantidad y Precio deben ser valores numéricos.")
 
         elif opcion == "2":
             i = input("ID del producto a borrar: ")
@@ -67,7 +78,12 @@ def menu():
             lista = inv.listar_productos()
             if lista:
                 print("\n--- INVENTARIO ACTUAL ---")
-                for p in lista: print(p)
+                print(f"{'ID':<10} | {'NOMBRE':<20} | {'STOCK':<10} | {'PRECIO':<10}")
+                print("-" * 65)
+                
+                for p in lista: 
+                    print(p)
+                print("="*65)
             else:
                 print("\n[!] AVISO: El inventario está vacío.")
 
